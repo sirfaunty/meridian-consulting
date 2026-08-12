@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Update the domain below when the client's site goes live.
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://meridian-consulting.patrick-fauntleroy.workers.dev
