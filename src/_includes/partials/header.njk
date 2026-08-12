@@ -1,6 +1,12 @@
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">{{ brand.businessName }}</a>
+    <a class="brand" href="/">
+      {% if brand.logo and brand.logo.image %}
+        <img class="brand-logo" src="{{ brand.logo.image }}" alt="{{ brand.logo.alt or brand.businessName }}" style="height: {{ brand.logo.height or 40 }}px">
+      {% else %}
+        {{ brand.businessName }}
+      {% endif %}
+    </a>
 
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
     <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">

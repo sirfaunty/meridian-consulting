@@ -80,7 +80,8 @@ section { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
   background: var(--color-background);
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 1rem; }
-.brand { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; color: var(--color-primary); text-decoration: none; }
+.brand { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; color: var(--color-primary); text-decoration: none; display: inline-flex; align-items: center; }
+.brand-logo { display: block; width: auto; }
 .site-nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
 .site-nav a { text-decoration: none; color: var(--color-text); font-weight: 500; }
 .site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--color-primary); text-decoration: underline; text-underline-offset: 4px; }

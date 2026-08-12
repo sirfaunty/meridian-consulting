@@ -24,7 +24,22 @@
     "primary": "#1c3652",
     "accent": "#3f8f8a",
     "text": "#1b232c",
-    "background": "#ffffff"
+    "background": "#ffffff",
+    "surface": "",
+    "border": "",
+    "muted": ""
+  },
+
+  "typography": {
+    "headingFont": "",
+    "bodyFont": "",
+    "useGoogleFonts": false
+  },
+
+  "logo": {
+    "image": "",
+    "alt": "",
+    "height": 40
   },
 
   "nav": [
@@ -59,5 +74,10 @@
   "cta": {
     "label": "Book a Consultation",
     "url": "/contact/"
+  },
+
+  "labels": {
+    "servicesHeading": "How we help",
+    "servicesButton": "See all services"
   }
 }

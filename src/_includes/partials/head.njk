@@ -18,16 +18,29 @@
   {% include "partials/schema.njk" %}
 
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+
+  {# Brand fonts — loaded from Google Fonts when enabled in brand.json #}
+  {% if brand.typography and brand.typography.useGoogleFonts and (brand.typography.headingFont or brand.typography.bodyFont) %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{% if brand.typography.headingFont %}family={{ brand.typography.headingFont | replace(' ', '+') }}:wght@400;600;700&{% endif %}{% if brand.typography.bodyFont %}family={{ brand.typography.bodyFont | replace(' ', '+') }}:wght@400;500;600;700&{% endif %}display=swap">
+  {% endif %}
+
   <link rel="stylesheet" href="/assets/css/styles.css">
 
-  <!-- Brand colors are injected here from brand.json. This is why changing the
-       four colors in that file re-skins the entire site. -->
+  <!-- Brand tokens injected from brand.json. Change these and the whole site
+       re-skins — colors, fonts, and neutrals all flow from here. -->
   <style>
     :root {
       --color-primary: {{ brand.brandColors.primary }};
       --color-accent: {{ brand.brandColors.accent }};
       --color-text: {{ brand.brandColors.text }};
       --color-background: {{ brand.brandColors.background }};
+      {% if brand.brandColors.surface %}--color-surface: {{ brand.brandColors.surface }};{% endif %}
+      {% if brand.brandColors.border %}--color-border: {{ brand.brandColors.border }};{% endif %}
+      {% if brand.brandColors.muted %}--color-muted: {{ brand.brandColors.muted }};{% endif %}
+      {% if brand.typography and brand.typography.headingFont %}--font-head: "{{ brand.typography.headingFont }}", Georgia, "Times New Roman", serif;{% endif %}
+      {% if brand.typography and brand.typography.bodyFont %}--font-body: "{{ brand.typography.bodyFont }}", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;{% endif %}
     }
   </style>
 </head>

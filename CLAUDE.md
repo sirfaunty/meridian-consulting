@@ -53,6 +53,9 @@ Edit the matching value under `contact` in `src/_data/brand.json`.
 **"Change our brand colors"**
 Edit the four values under `brandColors` in `brand.json`. Changing them re-skins the whole site automatically — no other files needed.
 
+**"Change our fonts / add our logo"**
+Fonts and logo are brand tokens in `brand.json` too — set `typography.headingFont`/`bodyFont` (with `useGoogleFonts: true`) and point `logo.image` at a file in `assets/images/`. See `BRAND-KIT.md` for the full brand token schema and how to map a brand deliverable onto it.
+
 **"Add / remove / reword a service"**
 Edit the `services` list in `brand.json`. Each service is a `title` and a `description`. The Home and Services pages update automatically.
 

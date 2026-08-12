@@ -1,0 +1,27 @@
+# Content quality gate. Runs whenever a post is added or changed in a pull
+# request, so a submitted draft is automatically SEO-checked before it can be
+# merged/published. This is what lets content go out hands-off but safe.
+
+name: Content check
+
+on:
+  pull_request:
+    paths:
+      - "src/blog/**"
+  workflow_dispatch: {}
+
+jobs:
+  lint-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: SEO lint the blog posts
+        run: |
+          echo "## Content SEO check" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          node tools/content-lint.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

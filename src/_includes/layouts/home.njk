@@ -17,7 +17,7 @@ layout: layouts/base.njk
 
 <section class="services-preview">
   <div class="container">
-    <h2>What we do</h2>
+    <h2>{{ brand.labels.servicesHeading or "What we do" }}</h2>
     <div class="card-grid">
       {% for service in brand.services %}
         <div class="card">
@@ -27,7 +27,7 @@ layout: layouts/base.njk
       {% endfor %}
     </div>
     <div class="center">
-      <a class="btn" href="/services/">See all services</a>
+      <a class="btn" href="/services/">{{ brand.labels.servicesButton or "See all services" }}</a>
     </div>
   </div>
 </section>
