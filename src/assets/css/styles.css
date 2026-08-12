@@ -1,0 +1,184 @@
+/* =========================================================================
+   Base brochure-site stylesheet.
+   The four brand colors come from brand.json and are injected as CSS
+   variables (--color-primary, --color-accent, --color-text,
+   --color-background) in the page <head>. You rarely need to edit this file
+   for a new client — change the colors in brand.json instead.
+   ========================================================================= */
+
+:root {
+  --max-width: 1080px;
+  --space: 1.25rem;
+  --radius: 10px;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-head: Georgia, "Times New Roman", serif;
+  /* Fallbacks in case brand.json colors are missing */
+  --color-primary: #1f4d63;
+  --color-accent: #e0a458;
+  --color-text: #1b1f24;
+  --color-background: #ffffff;
+  --color-muted: #5c6670;
+  --color-surface: #f5f6f8;
+  --color-border: #e3e6ea;
+}
+
+/* ---------- Reset-ish ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-background);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--color-primary); }
+
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.2; color: var(--color-primary); }
+h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 0.5rem; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.1rem); margin: 0 0 0.75rem; }
+h3 { font-size: 1.25rem; margin: 0 0 0.5rem; }
+
+/* ---------- Layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space);
+}
+.center { text-align: center; }
+section { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+
+.skip-link {
+  position: absolute; left: -999px;
+  background: var(--color-primary); color: #fff;
+  padding: 0.5rem 1rem; z-index: 100;
+}
+.skip-link:focus { left: 0; top: 0; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid var(--color-primary);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-accent { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-text); }
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  position: sticky; top: 0; z-index: 50;
+  background: var(--color-background);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding-block: 1rem; }
+.brand { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; color: var(--color-primary); text-decoration: none; }
+.site-nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+.site-nav a { text-decoration: none; color: var(--color-text); font-weight: 500; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--color-primary); text-decoration: underline; text-underline-offset: 4px; }
+
+/* Mobile menu toggle (CSS-only, no JS required) */
+.nav-toggle, .nav-toggle-label { display: none; }
+.nav-toggle-label { flex-direction: column; gap: 5px; cursor: pointer; padding: 0.4rem; }
+.nav-toggle-label span { width: 26px; height: 3px; background: var(--color-primary); border-radius: 2px; }
+
+@media (max-width: 720px) {
+  .nav-toggle-label { display: flex; }
+  .site-nav {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .site-nav ul { flex-direction: column; gap: 0; padding: 0.5rem 0; }
+  .site-nav li { padding: 0.5rem var(--space); }
+  .nav-toggle:checked ~ .site-nav { display: block; }
+  .header-inner { position: relative; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary), color-mix(in srgb, var(--color-primary) 70%, #000));
+  color: #fff;
+  text-align: center;
+}
+.hero h1 { color: #fff; }
+.hero-tagline { font-size: clamp(1.1rem, 2.5vw, 1.4rem); max-width: 40ch; margin: 0.5rem auto 1.75rem; opacity: 0.95; }
+
+/* ---------- Sections ---------- */
+.page-header { background: var(--color-surface); text-align: center; }
+.intro { text-align: center; }
+.intro .prose { max-width: 60ch; margin-inline: auto; }
+
+.prose p { margin: 0 0 1rem; }
+.prose h2 { margin-top: 2rem; }
+.prose a { color: var(--color-primary); }
+
+/* ---------- Cards ---------- */
+.services-preview h2, .services-preview .center { text-align: center; }
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.card h3 { color: var(--color-primary); }
+.card p { margin: 0; color: var(--color-muted); }
+
+/* ---------- CTA band ---------- */
+.cta-band { background: var(--color-surface); text-align: center; }
+.cta-inner p { color: var(--color-muted); margin-bottom: 1.5rem; }
+
+/* ---------- Contact ---------- */
+.contact-details { margin-top: 1.5rem; }
+.contact-details p { margin: 0.35rem 0; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--color-primary); color: #fff; margin-top: auto; }
+.site-footer a { color: #fff; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding-block: 2.5rem 1.5rem;
+}
+.footer-brand { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem; }
+.footer-heading { font-weight: 600; margin: 0 0 0.5rem; }
+.footer-col p { margin: 0.25rem 0; opacity: 0.9; }
+.social-list { list-style: none; margin: 0; padding: 0; }
+.social-list li { margin: 0.25rem 0; }
+.footer-legal { border-top: 1px solid rgba(255,255,255,0.2); padding-block: 1rem; font-size: 0.9rem; opacity: 0.8; }
+
+/* ---------- Blog ---------- */
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-list-item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.post-list-item h2 { margin: 0 0 0.25rem; }
+.post-list-item h2 a { color: var(--color-primary); text-decoration: none; }
+.post-list-item h2 a:hover { text-decoration: underline; }
+.post-list-item p { margin: 0.25rem 0; color: var(--color-muted); }
+.post-meta { color: var(--color-muted); font-size: 0.95rem; }
+.post .prose { max-width: 68ch; margin-inline: auto; }
+.post-back { font-size: 0.95rem; }
+.post-back a { text-decoration: none; }
+
+/* Full-height layout so the footer sits at the bottom on short pages */
+body { display: flex; flex-direction: column; min-height: 100vh; }
+main { flex: 1; }

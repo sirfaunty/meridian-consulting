@@ -1,0 +1,63 @@
+{
+  "businessName": "Meridian Consulting",
+  "tagline": "Strategy and operations for companies ready to scale.",
+  "domain": "meridianconsulting.co",
+  "siteUrl": "https://meridianconsulting.co",
+  "logoPath": "/assets/images/favicon.svg",
+
+  "contact": {
+    "phone": "(312) 555-0188",
+    "email": "hello@meridianconsulting.co",
+    "address": "225 W Washington St, Suite 1400, Chicago, IL 60606",
+    "hours": "Mon–Fri, 8am–6pm CT",
+    "mapUrl": "https://maps.google.com/?q=225+W+Washington+St+Chicago+IL"
+  },
+
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "https://linkedin.com/company/meridian-consulting",
+    "x": ""
+  },
+
+  "brandColors": {
+    "primary": "#1c3652",
+    "accent": "#3f8f8a",
+    "text": "#1b232c",
+    "background": "#ffffff"
+  },
+
+  "nav": [
+    { "label": "Home", "url": "/" },
+    { "label": "About", "url": "/about/" },
+    { "label": "Services", "url": "/services/" },
+    { "label": "Insights", "url": "/blog/" },
+    { "label": "Contact", "url": "/contact/" }
+  ],
+
+  "seo": {
+    "businessType": "ProfessionalService",
+    "streetAddress": "225 W Washington St, Suite 1400",
+    "city": "Chicago",
+    "region": "IL",
+    "postalCode": "60606",
+    "country": "US",
+    "latitude": "",
+    "longitude": "",
+    "priceRange": "$$$",
+    "foundingYear": "2016",
+    "areaServed": "United States"
+  },
+
+  "services": [
+    { "title": "Strategy Advisory", "description": "Clarify where to play and how to win — market focus, positioning, and a plan your team can actually execute." },
+    { "title": "Operations & Process", "description": "Remove the friction slowing you down. We redesign workflows and put the right metrics in place." },
+    { "title": "Growth & Go-to-Market", "description": "Sharpen your offer, pricing, and sales motion to convert more of the demand you're already creating." },
+    { "title": "Interim Leadership", "description": "Seasoned operators who step in to lead a function or a transition until the right hire is in place." }
+  ],
+
+  "cta": {
+    "label": "Book a Consultation",
+    "url": "/contact/"
+  }
+}

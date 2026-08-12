@@ -1,0 +1,20 @@
+# Free, native GitHub dependency updates.
+# Opens PRs when Eleventy or any dependency has an update or security fix — this
+# is the "keep it patched" half of the Care plan, running automatically.
+# Because every change is a PR, Cloudflare builds a preview you can check before
+# merging, and nothing goes live unreviewed.
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

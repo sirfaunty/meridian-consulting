@@ -1,0 +1,34 @@
+{
+  "siteInfo": {
+    "name": "Bright Smile Dental",
+    "description": "Gentle family dentistry in Springfield",
+    "url": "https://oldsite.com"
+  },
+  "pages": [
+    {
+      "slug": "home",
+      "link": "https://oldsite.com/",
+      "title": { "rendered": "Welcome to Bright Smile Dental" },
+      "content": { "rendered": "<p>We&#8217;ve cared for Springfield families for over <strong>20 years</strong>.</p><p>Book a visit today.</p>" }
+    },
+    {
+      "slug": "about-us",
+      "link": "https://oldsite.com/about-us/",
+      "title": { "rendered": "About Us" },
+      "content": { "rendered": "<h2>Our Story</h2><p>Founded in 2004 by Dr. Lee.</p><ul><li>Family owned</li><li>Modern equipment</li></ul>" }
+    }
+  ],
+  "posts": [
+    {
+      "slug": "flossing-tips",
+      "link": "https://oldsite.com/2023/06/flossing-tips/",
+      "date": "2023-06-12T10:00:00",
+      "title": { "rendered": "5 Flossing Tips" },
+      "excerpt": { "rendered": "<p>Simple ways to keep your gums healthy.</p>" },
+      "content": { "rendered": "<p>Here are our <em>favorite</em> tips. Read <a href=\"https://oldsite.com/contact/\">contact us</a>.</p>" }
+    }
+  ],
+  "media": [
+    { "source_url": "https://oldsite.com/wp-content/uploads/2023/logo.png" }
+  ]
+}

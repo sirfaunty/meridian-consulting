@@ -1,0 +1,11 @@
+# Build output — Cloudflare Pages regenerates this on every deploy.
+_site/
+
+# Dependencies — reinstalled from package.json, never committed.
+node_modules/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+.cache/

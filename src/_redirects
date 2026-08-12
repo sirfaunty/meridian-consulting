@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects. One rule per line: FROM  TO  STATUS
+# Add client-specific redirects here (e.g. old WordPress URLs -> new pages).
+# Example:
+# /old-page   /services/   301

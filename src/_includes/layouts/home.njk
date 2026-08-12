@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+---
+<section class="hero">
+  <div class="container hero-inner">
+    <h1>{{ brand.businessName }}</h1>
+    <p class="hero-tagline">{{ brand.tagline }}</p>
+    <a class="btn btn-accent" href="{{ brand.cta.url }}">{{ brand.cta.label }}</a>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="container prose">
+    {{ content | safe }}
+  </div>
+</section>
+
+<section class="services-preview">
+  <div class="container">
+    <h2>What we do</h2>
+    <div class="card-grid">
+      {% for service in brand.services %}
+        <div class="card">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="center">
+      <a class="btn" href="/services/">See all services</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <h2>{{ brand.cta.label }}</h2>
+    <p>{{ brand.contact.phone }} · {{ brand.contact.email }}</p>
+    <a class="btn btn-accent" href="{{ brand.cta.url }}">{{ brand.cta.label }}</a>
+  </div>
+</section>

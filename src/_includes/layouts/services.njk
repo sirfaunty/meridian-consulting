@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+---
+<section class="page-header">
+  <div class="container">
+    <h1>{{ title }}</h1>
+  </div>
+</section>
+
+<section class="page-body">
+  <div class="container prose">
+    {{ content | safe }}
+  </div>
+
+  <div class="container">
+    <div class="card-grid">
+      {% for service in brand.services %}
+        <div class="card">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <h2>Ready to start?</h2>
+    <p>{{ brand.contact.phone }} · {{ brand.contact.email }}</p>
+    <a class="btn btn-accent" href="{{ brand.cta.url }}">{{ brand.cta.label }}</a>
+  </div>
+</section>

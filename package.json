@@ -1,0 +1,18 @@
+{
+  "name": "brochure-base",
+  "version": "1.0.0",
+  "description": "Reusable base template for client brochure sites. Clone, rebrand via brand.json, deploy free on Cloudflare Pages.",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site",
+    "monitor": "node tools/site-monitor.mjs",
+    "import:wp": "node tools/wp-import.mjs",
+    "test:import": "node tools/wp-import.test.mjs"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

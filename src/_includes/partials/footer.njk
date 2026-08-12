@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <p class="footer-brand">{{ brand.businessName }}</p>
+      <p>{{ brand.tagline }}</p>
+    </div>
+
+    <div class="footer-col">
+      <p><a href="{{ brand.contact.phone | telHref }}">{{ brand.contact.phone }}</a></p>
+      <p><a href="mailto:{{ brand.contact.email }}">{{ brand.contact.email }}</a></p>
+      <p>{{ brand.contact.address }}</p>
+    </div>
+
+    {% if brand.social.facebook or brand.social.instagram or brand.social.linkedin or brand.social.x %}
+    <div class="footer-col">
+      <p class="footer-heading">Follow us</p>
+      <ul class="social-list">
+        {% if brand.social.facebook %}<li><a href="{{ brand.social.facebook }}">Facebook</a></li>{% endif %}
+        {% if brand.social.instagram %}<li><a href="{{ brand.social.instagram }}">Instagram</a></li>{% endif %}
+        {% if brand.social.linkedin %}<li><a href="{{ brand.social.linkedin }}">LinkedIn</a></li>{% endif %}
+        {% if brand.social.x %}<li><a href="{{ brand.social.x }}">X</a></li>{% endif %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="container footer-legal">
+    <p>&copy; {% year %} {{ brand.businessName }}. All rights reserved.</p>
+  </div>
+</footer>

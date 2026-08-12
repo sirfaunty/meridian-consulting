@@ -1,0 +1,5 @@
+{
+  "_comment": "Directory defaults for blog posts. Every .md file in this folder automatically becomes a blog post using the post layout — you never set these per file.",
+  "layout": "layouts/post.njk",
+  "tags": "posts"
+}

@@ -1,0 +1,38 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ brand.seo.businessType }}",
+  "name": "{{ brand.businessName }}",
+  "description": "{{ brand.tagline }}",
+  "url": "{{ brand.siteUrl }}",
+  "image": "{{ brand.siteUrl }}{{ brand.logoPath }}",
+  "telephone": "{{ brand.contact.phone }}",
+  "email": "{{ brand.contact.email }}",
+  "priceRange": "{{ brand.seo.priceRange }}",
+  {% if brand.seo.foundingYear %}"foundingDate": "{{ brand.seo.foundingYear }}",{% endif %}
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ brand.seo.streetAddress }}",
+    "addressLocality": "{{ brand.seo.city }}",
+    "addressRegion": "{{ brand.seo.region }}",
+    "postalCode": "{{ brand.seo.postalCode }}",
+    "addressCountry": "{{ brand.seo.country }}"
+  },
+  {% if brand.seo.latitude and brand.seo.longitude %}
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "{{ brand.seo.latitude }}",
+    "longitude": "{{ brand.seo.longitude }}"
+  },
+  {% endif %}
+  "areaServed": "{{ brand.seo.areaServed }}",
+  "sameAs": [
+    {%- set links = [] -%}
+    {%- if brand.social.facebook %}{% set links = (links.push(brand.social.facebook), links) %}{% endif -%}
+    {%- if brand.social.instagram %}{% set links = (links.push(brand.social.instagram), links) %}{% endif -%}
+    {%- if brand.social.linkedin %}{% set links = (links.push(brand.social.linkedin), links) %}{% endif -%}
+    {%- if brand.social.x %}{% set links = (links.push(brand.social.x), links) %}{% endif -%}
+    {%- for link in links %}"{{ link }}"{% if not loop.last %},{% endif %}{% endfor -%}
+  ]
+}
+</script>

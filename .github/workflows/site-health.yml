@@ -1,0 +1,62 @@
+# Care-tier automated health check.
+# Runs weekly (and on demand) with full network access — the deterministic
+# half of "managing the site." Pairs with a Cowork scheduled task that reads
+# the result and writes the plain-English client summary.
+
+name: Site health check
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"   # every Monday 13:00 UTC
+  workflow_dispatch: {}      # lets you (or a Cowork task) trigger it any time
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run health check
+        id: monitor
+        continue-on-error: true      # a failing check should report, not abort
+        run: node tools/site-monitor.mjs > report.md
+
+      - name: Dependency freshness
+        continue-on-error: true
+        run: |
+          echo "## Dependency status" >> report.md
+          echo '```' >> report.md
+          npm outdated >> report.md || true
+          echo '```' >> report.md
+          npm audit --omit=dev >> report.md || true
+
+      - name: Publish report to run summary
+        run: cat report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Save report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-report
+          path: report.md
+
+      - name: Open an issue if the check failed
+        if: steps.monitor.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('report.md', 'utf8');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Site health check needs attention — ${new Date().toISOString().slice(0,10)}`,
+              body,
+              labels: ['site-health']
+            });
