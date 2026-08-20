@@ -10,6 +10,10 @@ on:
     - cron: "0 13 * * 1"   # every Monday 13:00 UTC
   workflow_dispatch: {}      # lets you (or a Cowork task) trigger it any time
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   health:
     runs-on: ubuntu-latest
